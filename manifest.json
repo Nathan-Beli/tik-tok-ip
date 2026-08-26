@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "TikTok Live IP Viewer",
+  "version": "1.0",
+  "description": "Affiche les IPs des serveurs et connexions sur TikTok Live",
+  "permissions": [
+    "debugger",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.tiktok.com/*",
+    "https://*.tiktokcdn.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TikTok Live IP"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.tiktok.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
